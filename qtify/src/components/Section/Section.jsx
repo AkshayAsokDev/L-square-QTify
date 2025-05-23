@@ -2,6 +2,10 @@ import { Box, Grid, Stack, Typography, Button } from "@mui/material";
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import AlbumCard from "../Card/Card";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
 // Creating the album section based on api data 
 // required parameters : url
@@ -12,7 +16,7 @@ function Section({sectionName, url}) {
     // create state variable to 
     // 1. track state of showAll and render showAll/Collapse accordingly
     // 2. maintain api data 
-    const [showAll, setShowAll] = useState(true);
+    const [showAll, setShowAll] = useState(false);
     const albumList = useRef([]);
     const [visibleItems, setVisibleItems] = useState([]);
     const itemsPerRow = useRef(8);
@@ -41,25 +45,25 @@ function Section({sectionName, url}) {
     }, []);
 
     // useEffect to update the visible items based on showAll boolean change
-    useEffect(() => {
+    // useEffect(() => {
         
-        // console.log("showAll : ", showAll);
-        // console.log("albumList : ", albumList.current);
+    //     // console.log("showAll : ", showAll);
+    //     // console.log("albumList : ", albumList.current);
 
-        // if showAll is false, set visible items to only the count of itemsPerRow
-        if (!showAll){
-            setVisibleItems(albumRow.current);
-        }
-        else {
-            // if showAll is true, set visible items to all the items
-            setVisibleItems(albumList.current);
-        }
+    //     // if showAll is false, set visible items to only the count of itemsPerRow
+    //     if (!showAll){
+    //         setVisibleItems(albumRow.current);
+    //     }
+    //     else {
+    //         // if showAll is true, set visible items to all the items
+    //         setVisibleItems(albumList.current);
+    //     }
 
-        // console.log("visibleItems >>", visibleItems);
+    //     // console.log("visibleItems >>", visibleItems);
         
 
 
-    }, [showAll]);
+    // }, [showAll]);
 
     // render section using AlbumCard and Grid
     return (<Box sx={{ 
@@ -85,8 +89,26 @@ function Section({sectionName, url}) {
             {/* <Button sx={{ color : '#34C94B', textTransform : 'none'}}>Show all</Button> */}
             
         </Stack>
+        
+        {/* Show swiper view when state var showAll===false */}
+        {showAll || (
+            <Swiper 
+                modules={[Navigation]}
+                spaceBetween={10}
+                slidesPerView={8}
+                navigation
+            >
+                
+                {visibleItems.map((album) => {
+                    return (<SwiperSlide key={album.id}>
+                    <AlbumCard data={album} />
+                </SwiperSlide>)
+                })}
+            </Swiper>
+        )}
 
-        <Grid container spacing={2}>
+        {/* Show all view when var showAll===true */}
+        {showAll && (<Grid container spacing={2}>
             {/* Write a map function over the albumList to create the grids */}
             {(visibleItems.length > 0) && ((visibleItems.map((album) => {
                 // console.log("album >>", album);
@@ -99,7 +121,8 @@ function Section({sectionName, url}) {
                 </Grid>
             }))) }
             {}
-        </Grid>
+        </Grid>)}
+        
 
     </Box>)
 }
