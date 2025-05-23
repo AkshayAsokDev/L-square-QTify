@@ -25,10 +25,10 @@ export default function AlbumCard({data}){
     }
 
     return (
-        <Box sx={{ width : 'fit-content'}}>
+        <>
             <Card sx={{ 
-            minWidth: 159,
-            width : "100%",
+            // minWidth: 159,
+            // width : "100%",
             borderRadius : "10px" }}>
             <CardMedia
                 sx={{ height: 205 }}
@@ -43,7 +43,8 @@ export default function AlbumCard({data}){
             </CardActions>
             </Card>
             <Typography sx={{color : "#ffffff", textAlign : "left"}} >{data.title}</Typography>
-        </Box>
+        </>
+        
     
   );
 }
