@@ -7,7 +7,6 @@ function Hero() {
       backgroundColor : '#121212',
       color : '#ffffff',
       width : '100%',
-      height : "50%"
     }} className={styles.hero}>
       <div>
         <h1>100 Thousand Songs, ad-free</h1>

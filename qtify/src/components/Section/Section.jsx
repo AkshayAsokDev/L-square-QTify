@@ -12,7 +12,7 @@ function Section({sectionName, url}) {
     // create state variable to 
     // 1. track state of showAll and render showAll/Collapse accordingly
     // 2. maintain api data 
-    const [showAll, setShowAll] = useState(false);
+    const [showAll, setShowAll] = useState(true);
     const albumList = useRef([]);
     const [visibleItems, setVisibleItems] = useState([]);
     const itemsPerRow = useRef(8);
@@ -28,7 +28,7 @@ function Section({sectionName, url}) {
                 albumList.current = response.data;
 
                 albumRow.current = response.data.slice(0, itemsPerRow.current);
-                setVisibleItems(albumRow.current);
+                setVisibleItems(albumList.current);
                 
             } catch(e) {
                 if (e.response) {
