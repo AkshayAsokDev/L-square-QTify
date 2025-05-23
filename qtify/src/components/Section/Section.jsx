@@ -64,7 +64,7 @@ function Section({sectionName, url}) {
     // render section using AlbumCard and Grid
     return (<Box sx={{ 
         backgroundColor : '#121212',
-        padding : '30px'
+        padding : '5px 15px 5px 15px'
         }}>
         <Stack direction="row" justifyContent="space-between">
             <Typography 
@@ -92,7 +92,7 @@ function Section({sectionName, url}) {
                 // console.log("album >>", album);
                 return <Grid 
                     size={{md:1.5}} 
-                    padding="12px 0px 12px 0px"
+                    padding="6px 0px 6px 0px"
                     key={album.id}
                 >
                     <AlbumCard data={album} />

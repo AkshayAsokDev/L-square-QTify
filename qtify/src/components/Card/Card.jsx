@@ -31,7 +31,7 @@ export default function AlbumCard({data}){
             // width : "100%",
             borderRadius : "10px" }}>
             <CardMedia
-                sx={{ height: 205 }}
+                sx={{ height: 100 }}
                 image={data.image}
                 title={data.title}
             />
