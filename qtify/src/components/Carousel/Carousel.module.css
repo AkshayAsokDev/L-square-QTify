@@ -1,0 +1,19 @@
+.customRightButton, .customLeftButton {
+    background-color: transparent;
+    border: none;
+    border-radius: 100%;
+}
+
+.customRightButton {
+    position: absolute;
+    right: 0;
+    top: 40%;
+    z-index: 2;
+}
+
+.customLeftButton {
+    position: absolute;
+    left: 0;
+    top: 40%;
+    z-index: 2;
+}

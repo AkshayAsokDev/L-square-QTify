@@ -6,6 +6,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import Carousel from "../Carousel/Carousel";
+
 
 // Creating the album section based on api data 
 // required parameters : url
@@ -68,7 +70,8 @@ function Section({sectionName, url}) {
     // render section using AlbumCard and Grid
     return (<Box sx={{ 
         backgroundColor : '#121212',
-        padding : '5px 15px 5px 15px'
+        padding : '5px 15px 5px 15px',
+        position : "relative"
         }}>
         <Stack direction="row" justifyContent="space-between">
             <Typography 
@@ -92,19 +95,7 @@ function Section({sectionName, url}) {
         
         {/* Show swiper view when state var showAll===false */}
         {showAll || (
-            <Swiper 
-                modules={[Navigation]}
-                spaceBetween={10}
-                slidesPerView={8}
-                navigation
-            >
-                
-                {visibleItems.map((album) => {
-                    return (<SwiperSlide key={album.id}>
-                    <AlbumCard data={album} />
-                </SwiperSlide>)
-                })}
-            </Swiper>
+            <Carousel items={visibleItems} />
         )}
 
         {/* Show all view when var showAll===true */}
