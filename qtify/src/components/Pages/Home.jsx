@@ -4,6 +4,7 @@ import { useState } from "react";
 import Hero from "../Hero/Hero";
 import AlbumCard from "../Card/Card";
 import Section from "../Section/Section";
+import SongFilter from "../Songs/Songs";
 
 function Home() { 
 
@@ -25,6 +26,7 @@ function Home() {
             <AlbumCard />
             <Section sectionName="Top Albums" url="https://qtify-backend-labs.crio.do/albums/top" />
             <Section sectionName="New Albums" url="https://qtify-backend-labs.crio.do/albums/new" />
+            <SongFilter songsURL='https://qtify-backend-labs.crio.do/songs' genreURL='https://qtify-backend-labs.crio.do/genres' />
         </Box>
             
         

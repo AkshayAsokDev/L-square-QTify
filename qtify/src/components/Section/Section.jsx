@@ -2,10 +2,6 @@ import { Box, Grid, Stack, Typography, Button } from "@mui/material";
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import AlbumCard from "../Card/Card";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
 import Carousel from "../Carousel/Carousel";
 
 
@@ -13,7 +9,7 @@ import Carousel from "../Carousel/Carousel";
 // required parameters : url
 // renders the album onto the page
 // const url = "https://qtify-backend-labs.crio.do/albums/top"
-function Section({sectionName, url}) {
+function Section({sectionName, url, isSong=false}) {
 
     // create state variable to 
     // 1. track state of showAll and render showAll/Collapse accordingly
@@ -66,6 +62,9 @@ function Section({sectionName, url}) {
 
 
     // }, [showAll]);
+
+
+
 
     // render section using AlbumCard and Grid
     return (<Box sx={{ 

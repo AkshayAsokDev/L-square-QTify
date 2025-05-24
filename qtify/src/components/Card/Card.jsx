@@ -36,7 +36,7 @@ export default function AlbumCard({data}){
                 title={data.title}
             />
             <CardActions>
-                <Chip label={`${data.follows} follows`} sx={{
+                <Chip label={data.follows ? (`${data.follows} Follows`) : (`${data.likes} Likes`)} sx={{
                     backgroundColor : '#121212',
                     color : '#ffffff',            
                 }} />
